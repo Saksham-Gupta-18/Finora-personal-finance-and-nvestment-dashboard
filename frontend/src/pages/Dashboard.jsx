@@ -87,8 +87,8 @@ export default function Dashboard() {
             <LineChart data={monthly}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
+              <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
+              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
               <Legend />
               <Line type="monotone" dataKey="income" stroke="#10b981" />
               <Line type="monotone" dataKey="expense" stroke="#ef4444" />
@@ -104,7 +104,7 @@ export default function Dashboard() {
                   <Cell key={`cell-${index}`} fill={["#3b82f6","#10b981","#f59e0b","#ef4444","#8b5cf6"][index % 5]} />
                 ))}
               </Pie>
-              <Tooltip />
+              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -116,8 +116,8 @@ export default function Dashboard() {
           <LineChart data={dailySeries}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="day" />
-            <YAxis />
-            <Tooltip />
+            <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
+            <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
             <Legend />
             <Line type="monotone" dataKey="income" stroke="#10b981" />
             <Line type="monotone" dataKey="expense" stroke="#ef4444" />
@@ -145,7 +145,7 @@ export default function Dashboard() {
                   <td className="py-2">{new Date(tx.date).toLocaleDateString()}</td>
                   <td className={tx.type === 'income' ? 'text-green-600' : 'text-red-600'}>{tx.type}</td>
                   <td>{(tx.note && tx.note.includes('saved_to:')) ? `saved to ${tx.note.split('saved_to:')[1]}` : tx.category}</td>
-                  <td className="text-right">{Number(tx.amount).toFixed(2)}</td>
+                  <td className="text-right">₹{Number(tx.amount).toFixed(2)}</td>
                   <td className="text-right">
                     <button
                       className="text-red-600 hover:underline"
@@ -176,7 +176,7 @@ function StatCard({ title, value, color }) {
   return (
     <div className="bg-white p-4 rounded shadow">
       <div className="text-sm text-gray-500">{title}</div>
-      <div className={`text-2xl font-bold ${color}`}>{Number(value).toFixed(2)}</div>
+      <div className={`text-2xl font-bold ${color}`}>₹{Number(value).toFixed(2)}</div>
     </div>
   );
 }

@@ -95,7 +95,7 @@ export default function Portfolio() {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip />
+              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -105,8 +105,8 @@ export default function Portfolio() {
             <LineChart data={lineData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
+              <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
+              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
               <Legend />
               <Line type="monotone" dataKey="gain" stroke="#3b82f6" />
             </LineChart>
@@ -126,7 +126,7 @@ function AssetRow({ token, asset, onChanged, pnl }) {
       <td className="py-2">{asset.asset_name}</td>
       <td>{asset.type}</td>
       <td className="text-right">{Number(asset.quantity)}</td>
-      <td className="text-right">{Number(asset.buy_price)}</td>
+      <td className="text-right">₹{Number(asset.buy_price)}</td>
       <td className="text-right">
         {editing ? (
           <div className="flex items-center gap-2 justify-end">
@@ -136,12 +136,12 @@ function AssetRow({ token, asset, onChanged, pnl }) {
           </div>
         ) : (
           <>
-            {Number(asset.current_price)}
+            ₹{Number(asset.current_price)}
             <button className="ml-2 text-blue-600" onClick={()=>setEditing(true)}>Edit</button>
           </>
         )}
       </td>
-      <td className={`text-right ${pnl>=0?'text-green-600':'text-red-600'}`}>{pnl.toFixed(2)}</td>
+      <td className={`text-right ${pnl>=0?'text-green-600':'text-red-600'}`}>₹{pnl.toFixed(2)}</td>
       <td className="text-right"><button className="text-red-600" onClick={async ()=>{ await deleteAsset(token, asset.id); await onChanged(); }}>Delete</button></td>
     </tr>
   );
