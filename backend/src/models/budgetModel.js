@@ -17,11 +17,14 @@ export async function getMonthlyBudget(userId, month) {
 }
 
 export async function getBudgetProgress(userId, month) {
-  const start = month + '-01';
-  const end = month + '-31';
+  // Calculate month range using SQL to avoid invalid last-day values
   const exp = await query(
-    `SELECT COALESCE(SUM(amount),0) as spent FROM transactions WHERE user_id=$1 AND type='expense' AND date >= $2 AND date <= $3`,
-    [userId, start, end]
+    `SELECT COALESCE(SUM(amount),0) as spent
+     FROM transactions
+     WHERE user_id=$1 AND type='expense'
+       AND date >= to_date($2, 'YYYY-MM')
+       AND date < (to_date($2, 'YYYY-MM') + INTERVAL '1 month')`,
+    [userId, month]
   );
   const budget = await getMonthlyBudget(userId, month);
   return { month, limit_amount: Number(budget?.limit_amount || 0), spent: Number(exp.rows[0].spent) };

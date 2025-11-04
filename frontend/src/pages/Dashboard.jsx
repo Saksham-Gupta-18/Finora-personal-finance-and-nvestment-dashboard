@@ -8,10 +8,13 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, Responsi
 export default function Dashboard() {
   const { token } = useAuth();
   const [items, setItems] = useState([]);
-  const [stats, setStats] = useState({ total_income: 0, total_expense: 0 });
+  const [stats, setStats] = useState({ total_income: 0, total_expense: 0, total_saving: 0 });
   const [error, setError] = useState('');
   const [monthly, setMonthly] = useState([]);
   const [byCategory, setByCategory] = useState([]);
+  const [bySaving, setBySaving] = useState([]);
+  const [forecast, setForecast] = useState(null);
+  const [savingsForecast, setSavingsForecast] = useState({ goals: [] });
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
   const [budgetMonth, setBudgetMonth] = useState(() => new Date().toISOString().slice(0,7));
@@ -22,13 +25,19 @@ export default function Dashboard() {
       try {
         const data = await request('/transactions', { token });
         const statsData = await request(`/transactions/stats/summary?start=${encodeURIComponent(start||'')}&end=${encodeURIComponent(end||'')}`, { token });
+        const fc = await request('/forecast', { token });
+        const sfc = await request('/forecast/savings', { token });
         setItems(data.transactions);
         setStats({
           total_income: Number(data.stats?.total_income || statsData.totals?.total_income || 0),
-          total_expense: Number(data.stats?.total_expense || statsData.totals?.total_expense || 0)
+          total_expense: Number(data.stats?.total_expense || statsData.totals?.total_expense || 0),
+          total_saving: Number(data.stats?.total_saving || statsData.totals?.total_saving || 0)
         });
         setMonthly(statsData.monthly || []);
         setByCategory(statsData.byCategory || []);
+        setBySaving(statsData.bySaving || []);
+        setForecast(fc || null);
+        setSavingsForecast(sfc || { goals: [] });
       } catch (e) {
         setError(e.message);
       }
@@ -39,22 +48,27 @@ export default function Dashboard() {
   const balance = stats.total_income - stats.total_expense;
   // build last 10 days income/expense series
   const last10Dates = Array.from({ length: 10 }, (_, i) => {
-    const d = new Date();
+    const d = end ? new Date(end) : new Date();
     d.setDate(d.getDate() - (9 - i));
     const iso = d.toISOString().slice(0, 10);
     const label = iso.slice(5); // MM-DD
     return { iso, label };
   });
   const dailySeries = last10Dates.map(({ iso, label }) => {
-    let inc = 0; let exp = 0;
+    let inc = 0; let exp = 0; let sav = 0;
     for (const t of items) {
-      const tDate = new Date(t.date).toISOString().slice(0,10);
-      if (tDate === iso) {
+      const tDateIso = new Date(t.date).toISOString().slice(0,10);
+      // apply optional start/end filter to daily series too
+      const withinStart = !start || tDateIso >= start;
+      const withinEnd = !end || tDateIso <= end;
+      if (!(withinStart && withinEnd)) continue;
+      if (tDateIso === iso) {
         if (t.type === 'income') inc += Number(t.amount);
         else if (t.type === 'expense') exp += Number(t.amount);
+        else if (t.type === 'saving') sav += Number(t.amount);
       }
     }
-    return { day: label, income: inc, expense: exp };
+    return { day: label, income: inc, expense: exp, saving: sav };
   });
 
   return (
@@ -72,12 +86,14 @@ export default function Dashboard() {
           <input type="date" className="border rounded px-3 py-2" value={end} onChange={(e)=>setEnd(e.target.value)} />
         </div>
           <button className="px-3 py-2 bg-primary text-white rounded" onClick={()=>{ /* state changes trigger reload */ }}>Apply</button>
+          <button className="px-3 py-2 bg-gray-200 text-gray-800 rounded" onClick={()=>{ setStart(''); setEnd(''); }}>Reset</button>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-4 gap-4">
         <StatCard title="Income" value={stats.total_income} color="text-green-600" />
         <StatCard title="Expenses" value={stats.total_expense} color="text-red-600" />
         <StatCard title="Balance" value={balance} color="text-blue-700" />
+        <StatCard title="Total Savings" value={stats.total_saving} color="text-blue-600" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-4">
@@ -92,6 +108,8 @@ export default function Dashboard() {
               <Legend />
               <Line type="monotone" dataKey="income" stroke="#10b981" />
               <Line type="monotone" dataKey="expense" stroke="#ef4444" />
+              {/* Optionally show savings as a line if desired */}
+              {/* <Line type="monotone" dataKey="saving" stroke="#3b82f6" /> */}
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -110,8 +128,104 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* Savings by Category */}
       <div className="bg-white p-4 rounded shadow h-80">
-        <h3 className="font-semibold mb-3">Income and Expenses for last 10 days</h3>
+        <h3 className="font-semibold mb-3">Savings by Category/Goal</h3>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie data={bySaving} dataKey="total" nameKey="category" outerRadius={100}>
+              {bySaving.map((entry, index) => (
+                <Cell key={`scell-${index}`} fill={["#3b82f6","#60a5fa","#93c5fd","#1d4ed8","#2563eb"][index % 5]} />
+              ))}
+            </Pie>
+            <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
+
+      {/* Forecast Section */}
+      <div className="bg-white p-4 rounded shadow">
+        <h3 className="font-semibold mb-2">Forecast</h3>
+        {forecast?.message && (
+          <div className="mb-3 text-sm">
+            {forecast.message}
+          </div>
+        )}
+        {forecast?.monthly && forecast?.forecast_next_month !== undefined && (
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={(function(){
+                const last6 = (forecast.monthly || []).slice(-6);
+                // next month label
+                let nextLabel = '';
+                if (last6.length) {
+                  const last = last6[last6.length - 1].month; // YYYY-MM
+                  const [y,m] = last.split('-').map(Number);
+                  const d = new Date(y, (m||1)-1, 1);
+                  d.setMonth(d.getMonth()+1);
+                  nextLabel = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+                }
+                return [
+                  ...last6.map(x => ({ month: x.month, expense: Number(x.expense||0), isForecast: false })),
+                  { month: nextLabel || 'Next', expense: Number(forecast.forecast_next_month||0), isForecast: true }
+                ];
+              })()}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="month" />
+                <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
+                <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+                <Legend />
+                <Line type="monotone" dataKey="expense" stroke="#3b82f6" strokeDasharray="3 0"
+                  dot={{ r: 3 }}
+                  isAnimationActive={false}
+                  name="Expense" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        )}
+      </div>
+
+      {/* Goals Completion Forecast */}
+      <div className="bg-white p-4 rounded shadow">
+        <h3 className="font-semibold mb-2">Savings Goals – Expected Completion</h3>
+        {Array.isArray(savingsForecast?.goals) && savingsForecast.goals.length > 0 ? (
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="text-left border-b">
+                  <th className="py-2">Goal</th>
+                  <th>Saved</th>
+                  <th>Target</th>
+                  <th>Est. Completion</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {savingsForecast.goals.map((g, idx) => {
+                  const goal = g.goal || {};
+                  const f = g.forecast || {};
+                  const statusLabel = f.not_enough_data ? 'Not enough data' : (f.status === 'on_track' ? 'On Track' : f.status === 'slightly_behind' ? 'Slightly Behind' : f.status === 'behind' ? 'Behind' : '—');
+                  const statusColor = f.not_enough_data ? 'text-gray-600' : (f.status === 'on_track' ? 'text-green-600' : f.status === 'slightly_behind' ? 'text-orange-500' : f.status === 'behind' ? 'text-red-600' : 'text-gray-600');
+                  return (
+                    <tr key={goal.id || idx} className="border-b last:border-0">
+                      <td className="py-2">{goal.name}</td>
+                      <td>₹{Number(goal.current_savings||0).toFixed(2)}</td>
+                      <td>₹{Number(goal.target_amount||0).toFixed(2)} by {goal.target_date ? new Date(goal.target_date).toLocaleDateString() : '—'}</td>
+                      <td>{f.not_enough_data ? '—' : (f.estimated_completion_date || '—')}</td>
+                      <td className={statusColor}>{statusLabel}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="text-sm text-gray-600">No goals found.</div>
+        )}
+      </div>
+
+      <div className="bg-white p-4 rounded shadow h-80">
+        <h3 className="font-semibold mb-3">Income, Expenses and Savings for last 10 days</h3>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={dailySeries}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -121,6 +235,7 @@ export default function Dashboard() {
             <Legend />
             <Line type="monotone" dataKey="income" stroke="#10b981" />
             <Line type="monotone" dataKey="expense" stroke="#ef4444" />
+            <Line type="monotone" dataKey="saving" stroke="#3b82f6" />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -140,7 +255,7 @@ export default function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {items.slice(0, 10).map(tx => (
+              {items.map(tx => (
                 <tr key={tx.id} className="border-b last:border-0">
                   <td className="py-2">{new Date(tx.date).toLocaleDateString()}</td>
                   <td className={tx.type === 'income' ? 'text-green-600' : 'text-red-600'}>{tx.type}</td>

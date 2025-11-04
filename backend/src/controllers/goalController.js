@@ -1,4 +1,4 @@
-import { createGoal, updateGoal, listGoals, getGoalProgress, addContribution } from '../models/goalModel.js';
+import { createGoal, updateGoal, listGoals, getGoalProgress, addContribution, listContributions } from '../models/goalModel.js';
 
 export async function create(req, res, next) {
   try {
@@ -31,6 +31,13 @@ export async function contribute(req, res, next) {
     const { goal_id, amount, date } = req.body;
     const c = await addContribution(req.user.id, { goal_id, amount: Number(amount), date });
     res.status(201).json({ contribution: c });
+  } catch (e) { next(e); }
+}
+
+export async function contributions(req, res, next) {
+  try {
+    const items = await listContributions(req.user.id);
+    res.json({ contributions: items });
   } catch (e) { next(e); }
 }
 

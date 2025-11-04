@@ -56,4 +56,15 @@ export async function getGoalProgress(userId) {
   }));
 }
 
+export async function listContributions(userId) {
+  const res = await query(
+    `SELECT goal_id, amount::float8 AS amount, date::date AS date
+     FROM savings_contributions
+     WHERE user_id=$1
+     ORDER BY date ASC, created_at ASC`,
+    [userId]
+  );
+  return res.rows;
+}
+
 

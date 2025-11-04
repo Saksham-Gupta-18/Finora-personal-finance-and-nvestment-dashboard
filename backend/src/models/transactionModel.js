@@ -65,7 +65,8 @@ export async function getStats(userId) {
   const totals = await query(
     `SELECT
        SUM(CASE WHEN type = 'income' THEN amount ELSE 0 END) AS total_income,
-       SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END) AS total_expense
+       SUM(CASE WHEN type = 'expense' THEN amount ELSE 0 END) AS total_expense,
+       SUM(CASE WHEN type = 'saving' THEN amount ELSE 0 END) AS total_saving
      FROM transactions WHERE user_id = $1`,
     [userId]
   );
@@ -76,7 +77,8 @@ export async function getMonthlyIncomeExpense(userId, { start, end } = {}) {
   const result = await query(
     `SELECT to_char(date_trunc('month', date), 'YYYY-MM') as month,
             SUM(CASE WHEN type='income' THEN amount ELSE 0 END) as income,
-            SUM(CASE WHEN type='expense' THEN amount ELSE 0 END) as expense
+            SUM(CASE WHEN type='expense' THEN amount ELSE 0 END) as expense,
+            SUM(CASE WHEN type='saving' THEN amount ELSE 0 END) as saving
      FROM transactions
      WHERE user_id = $1
        AND ($2::date IS NULL OR date >= $2::date)
@@ -90,10 +92,37 @@ export async function getMonthlyIncomeExpense(userId, { start, end } = {}) {
 
 export async function getExpenseByCategory(userId, { start, end } = {}) {
   const result = await query(
-    `SELECT COALESCE(c.name,'Uncategorized') as category, SUM(t.amount)::float8 as total
+    `SELECT 
+       COALESCE(
+         NULLIF(TRIM(split_part(t.note, 'saved_to:', 2)), ''),
+         c.name,
+         'Uncategorized'
+       ) AS category,
+       SUM(t.amount)::float8 AS total
      FROM transactions t
      LEFT JOIN categories c ON c.id = t.category_id
      WHERE t.user_id = $1 AND t.type='expense'
+       AND ($2::date IS NULL OR t.date >= $2::date)
+       AND ($3::date IS NULL OR t.date <= $3::date)
+     GROUP BY 1
+     ORDER BY total DESC`,
+    [userId, start || null, end || null]
+  );
+  return result.rows;
+}
+
+export async function getSavingByCategory(userId, { start, end } = {}) {
+  const result = await query(
+    `SELECT 
+       COALESCE(
+         NULLIF(TRIM(split_part(t.note, 'saved_to:', 2)), ''),
+         c.name,
+         'Uncategorized'
+       ) AS category,
+       SUM(t.amount)::float8 AS total
+     FROM transactions t
+     LEFT JOIN categories c ON c.id = t.category_id
+     WHERE t.user_id = $1 AND t.type='saving'
        AND ($2::date IS NULL OR t.date >= $2::date)
        AND ($3::date IS NULL OR t.date <= $3::date)
      GROUP BY 1

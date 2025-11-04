@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 
 DO $$ BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'transaction_type') THEN
-    CREATE TYPE transaction_type AS ENUM ('income', 'expense');
+    CREATE TYPE transaction_type AS ENUM ('income', 'expense', 'saving');
   END IF;
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
 
@@ -66,21 +66,6 @@ CREATE TABLE IF NOT EXISTS portfolio (
 );
 CREATE INDEX IF NOT EXISTS idx_portfolio_user ON portfolio(user_id);
 
--- Recurring Transactions templates
-CREATE TABLE IF NOT EXISTS recurring_transactions (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  category_id INTEGER REFERENCES categories(id) ON DELETE SET NULL,
-  type transaction_type NOT NULL,
-  amount NUMERIC(12,2) NOT NULL CHECK (amount >= 0),
-  note TEXT NOT NULL DEFAULT '',
-  day_of_month SMALLINT NOT NULL CHECK (day_of_month BETWEEN 1 AND 28),
-  last_applied_date DATE,
-  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMP NOT NULL DEFAULT NOW()
-);
-CREATE INDEX IF NOT EXISTS idx_recurring_user ON recurring_transactions(user_id);
-
 -- Monthly Budgets
 CREATE TABLE IF NOT EXISTS budgets (
   id SERIAL PRIMARY KEY,
@@ -134,10 +119,6 @@ FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
 DROP TRIGGER IF EXISTS portfolio_set_updated_at ON portfolio;
 CREATE TRIGGER portfolio_set_updated_at BEFORE UPDATE ON portfolio
-FOR EACH ROW EXECUTE FUNCTION set_updated_at();
-
-DROP TRIGGER IF EXISTS recurring_set_updated_at ON recurring_transactions;
-CREATE TRIGGER recurring_set_updated_at BEFORE UPDATE ON recurring_transactions
 FOR EACH ROW EXECUTE FUNCTION set_updated_at();
 
 

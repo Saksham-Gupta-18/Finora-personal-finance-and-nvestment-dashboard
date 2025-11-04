@@ -12,7 +12,7 @@ export function isValidEmail(value) {
 }
 
 export function isValidTransactionType(value) {
-  return value === 'income' || value === 'expense';
+  return value === 'income' || value === 'expense' || value === 'saving';
 }
 
 

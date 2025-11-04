@@ -68,7 +68,7 @@ export default function Home() {
             </div>
             <div className="bg-white rounded-lg p-4 shadow">
               <b>Income & Expense Tracker</b>
-              <p className="mt-2">Custom categories, recurring entries, and savings insights.</p>
+              <p className="mt-2">Custom categories and savings insights.</p>
             </div>
             <div className="bg-white rounded-lg p-4 shadow">
               <b>Portfolio Tracker</b>

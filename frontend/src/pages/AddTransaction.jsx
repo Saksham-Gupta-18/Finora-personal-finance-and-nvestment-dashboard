@@ -11,12 +11,11 @@ export default function AddTransaction() {
   const [type, setType] = useState('income');
   const [amount, setAmount] = useState('');
   const [categoryId, setCategoryId] = useState('');
+  const [categoryName, setCategoryName] = useState('');
   const [note, setNote] = useState('');
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [error, setError] = useState('');
   const [categories, setCategories] = useState([]);
-  const [recurring, setRecurring] = useState(false);
-  const [recurringDay, setRecurringDay] = useState(1);
   const [goals, setGoals] = useState([]);
   const [goalId, setGoalId] = useState('');
 
@@ -29,14 +28,28 @@ export default function AddTransaction() {
     e.preventDefault();
     setError('');
     try {
+      // Resolve typed category/goal name to id
+      const foundCategory = categories.find(c => String(c.id) === String(categoryId)) || categories.find(c => (c.name||'').toLowerCase() === categoryName.trim().toLowerCase());
+      const foundGoal = goals.find(g => String(g.id) === String(categoryId)) || goals.find(g => (g.name||'').toLowerCase() === categoryName.trim().toLowerCase());
+
+      if (type === 'saving' && !foundGoal) {
+        setError('Please start typing and select a goal from suggestions');
+        return;
+      }
+
+      const payload = {
+        type,
+        amount: Number(amount),
+        categoryId: type==='saving' ? null : (foundCategory ? Number(foundCategory.id) : null),
+        note,
+        date,
+        goal_id: type==='saving' ? (foundGoal ? Number(foundGoal.id) : null) : null
+      };
       await request('/transactions', {
         method: 'POST',
         token,
-        body: { type, amount: Number(amount), categoryId: categoryId || null, note, date, add_to_savings: type==='expense' && !!goalId, goal_id: goalId && type==='expense' ? Number(goalId) : null }
+        body: payload
       });
-      if (recurring) {
-        await request('/recurring', { method: 'POST', token, body: { categoryId: categoryId || null, type, amount: Number(amount), note, day_of_month: Number(recurringDay) } });
-      }
       navigate('/dashboard');
     } catch (e) {
       setError(e.message);
@@ -53,6 +66,7 @@ export default function AddTransaction() {
           <select className="w-full border rounded px-3 py-2" value={type} onChange={(e)=>setType(e.target.value)}>
             <option value="income">Income</option>
             <option value="expense">Expense</option>
+            <option value="saving">Saving</option>
           </select>
         </div>
         <div>
@@ -60,11 +74,20 @@ export default function AddTransaction() {
           <input type="number" min="0" step="0.01" className="w-full border rounded px-3 py-2" value={amount} onChange={(e)=>setAmount(e.target.value)} required />
         </div>
         <div>
-          <label className="block mb-1 text-sm">Category</label>
-          <select className="w-full border rounded px-3 py-2" value={categoryId} onChange={(e)=>setCategoryId(e.target.value)}>
-            <option value="">Uncategorized</option>
-            {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-          </select>
+          <label className="block mb-1 text-sm">Category{type==='saving' ? ' (choose goal)' : ''}</label>
+          <input
+            className="w-full border rounded px-3 py-2"
+            list="categoryOptions"
+            placeholder={type==='saving' ? 'Start typing a goal name…' : 'Start typing a category…'}
+            value={categoryName}
+            onChange={(e)=>{ setCategoryName(e.target.value); setCategoryId(''); }}
+            required={type==='saving'}
+          />
+          <datalist id="categoryOptions">
+            {type==='saving'
+              ? goals.map(g => (<option key={g.id} value={g.name} />))
+              : categories.map(c => (<option key={c.id} value={c.name} />))}
+          </datalist>
         </div>
         <div>
           <label className="block mb-1 text-sm">Note</label>
@@ -74,25 +97,7 @@ export default function AddTransaction() {
           <label className="block mb-1 text-sm">Date</label>
           <input type="date" className="w-full border rounded px-3 py-2" value={date} onChange={(e)=>setDate(e.target.value)} />
         </div>
-        <div className="col-span-full flex items-center gap-2">
-          <input id="recurring" type="checkbox" checked={recurring} onChange={(e)=>setRecurring(e.target.checked)} />
-          <label htmlFor="recurring">Mark as recurring</label>
-          {recurring && (
-            <>
-              <span className="text-sm text-gray-600">on day</span>
-              <input type="number" min="1" max="28" className="border rounded px-2 py-1 w-20" value={recurringDay} onChange={(e)=>setRecurringDay(e.target.value)} />
-            </>
-          )}
-        </div>
-        {type==='expense' && (
-          <div>
-            <label className="block mb-1 text-sm">Add to savings</label>
-            <select className="w-full border rounded px-3 py-2" value={goalId} onChange={(e)=>setGoalId(e.target.value)}>
-              <option value="">None</option>
-              {goals.map(g => <option key={g.id} value={g.id}>{g.name}</option>)}
-            </select>
-          </div>
-        )}
+        {/* Goal picker removed; choose goal from Category when type='saving' */}
         <button className="w-full bg-accent text-white py-2 rounded">Save</button>
       </form>
     </div>

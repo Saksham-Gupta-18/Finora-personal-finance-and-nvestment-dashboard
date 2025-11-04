@@ -6,6 +6,7 @@ Finora helps users manage income, expenses, and investments via a clean, respons
 - Frontend: React.js, HTML, CSS, JavaScript, Tailwind CSS
 - Charts: Recharts
 - Backend: Node.js, Express.js
+- Forecasting Service: Python (FastAPI)
 - Database: PostgreSQL
 - Auth: JWT (JSON Web Token) with bcrypt password hashing
 - API: REST
@@ -24,7 +25,6 @@ finora/
         categoryController.js
         portfolioController.js
         savingsController.js
-        recurringController.js
         budgetController.js
         goalController.js
       middleware/
@@ -36,7 +36,6 @@ finora/
         categoryModel.js
         portfolioModel.js
         savingsModel.js
-        recurringModel.js
         budgetModel.js
         goalModel.js
       routes/
@@ -45,7 +44,6 @@ finora/
         categoryRoutes.js
         portfolioRoutes.js
         savingsRoutes.js
-        recurringRoutes.js
         budgetRoutes.js
         goalRoutes.js
         contactRoutes.js
@@ -84,7 +82,6 @@ finora/
         portfolio.js
         budgets.js
         goals.js
-        recurring.js
       App.js
       index.js
       index.css
@@ -94,6 +91,10 @@ finora/
     env.example
     .gitignore
 
+  forecast_service/
+    main.py
+    requirements.txt
+
   database/
     schema.sql
   API.md
@@ -102,6 +103,7 @@ finora/
 
 ## Prerequisites
 - Node.js 18+
+- Python 3.10+
 - PostgreSQL 13+
 
 ## Database Setup
@@ -111,9 +113,9 @@ finora/
      ```bash
      psql -U postgres -d finora_db -f database/schema.sql
      ```
-   - Tables created: `users`, `categories`, `transactions`, `savings`, `portfolio`, `recurring_transactions`, `budgets`, `savings_goals`.
+   - Tables created: `users`, `categories`, `transactions`, `savings`, `portfolio`, `budgets`, `savings_goals`, `savings_contributions`.
 
-## Backend Setup
+## Backend Setup (Node + Express)
 ```bash
 cd backend
 cp env.example .env
@@ -125,8 +127,9 @@ npm run dev
   - `PGHOST`, `PGPORT`, `PGDATABASE`, `PGUSER`, `PGPASSWORD`
   - `JWT_SECRET` (required)
   - `CLIENT_ORIGIN` (e.g., http://localhost:3000)
+  - `FORECAST_SERVICE_URL` (default `http://localhost:8000/forecast`)
 
-## Frontend Setup
+## Frontend Setup (React)
 ```bash
 cd frontend
 cp env.example .env
@@ -137,15 +140,36 @@ npm start
 - A proxy is set to `http://localhost:5000` in `package.json` for API calls.
  - Recharts is included as a dependency.
 
+## Forecasting Service Setup (Python + FastAPI)
+```bash
+cd forecast_service
+python -m venv .venv
+. .venv/Scripts/activate  # Windows PowerShell: .venv\\Scripts\\Activate.ps1
+pip install -r requirements.txt
+
+# Optional: set env (or create forecast_service/.env)
+# FORECAST_PORT=8000
+# CLIENT_ORIGIN=http://localhost:3000
+# NODE_API_BASE=http://localhost:5000/api
+
+python main.py
+```
+- The service runs on `http://localhost:8000` by default and exposes `GET /forecast`.
+- It fetches authenticated expenses from the Node backend at `GET /api/expenses` and returns:
+  - `forecast_next_month`, `growth_rate`, `message`, and a `monthly` series for charting.
+
 ## Environment Variables
 - Backend: see `backend/env.example`
 - Frontend: see `frontend/env.example` (uses `REACT_APP_` prefix)
 
-## Running the App
+## Running the App (All Services)
 1. Start PostgreSQL and ensure the schema is applied.
-2. Start backend: `npm run dev` in `backend/`.
-3. Start frontend: `npm start` in `frontend/`.
-4. Visit `http://localhost:3000`.
+2. Backend (Node): in `backend/` → `npm run dev`.
+3. Forecasting service (Python): in `forecast_service/` → `python main.py`.
+4. Frontend (React): in `frontend/` → `npm start`.
+5. Visit `http://localhost:3000` and go to Dashboard → Forecast section.
+
+Environment quick reference: see `ENV_SETUP.md` for consolidated `.env` examples for both services.
 
 ## Features
 - Sign Up / Sign In with JWT
@@ -156,7 +180,6 @@ npm start
   - Bar: income/expense quick views where applicable
 - Income & Expense Tracker:
   - Categories management and dropdown selection in forms
-  - Recurring transactions (monthly) – create templates and auto-apply
 - Portfolio Tracker:
   - Assets (name, type, qty, buy/current price) + charts (pie and line)
   - Inline "Edit Current Price" per asset, instant P/L refresh
@@ -186,13 +209,13 @@ Quick reference (JWT required unless noted):
 - Transactions: CRUD `/api/transactions`, GET `/api/transactions/stats/summary?start=YYYY-MM-DD&end=YYYY-MM-DD`
 - Categories: GET/POST `/api/categories`, DELETE `/api/categories/:id`
 - Portfolio: GET/POST `/api/portfolio`, PUT/DELETE `/api/portfolio/:id`
-- Recurring: GET/POST `/api/recurring`, DELETE `/api/recurring/:id`, POST `/api/recurring/apply`
 - Budgets: POST `/api/budgets` { month, limit_amount }, GET `/api/budgets/progress?month=YYYY-MM`
 - Goals: POST `/api/goals`, GET `/api/goals`, GET `/api/goals/progress`
+- Expenses (for forecasting): GET `/api/expenses` (JWT required)
+- Forecast proxy: GET `/api/forecast` (proxies to Python service)
 
 ## Notes
 - Logout is stateless (client deletes stored JWT).
-- Recurring transactions are applied on demand via `POST /api/recurring/apply` (you can trigger this at login or from a scheduled job).
 - For production, serve frontend separately and set `CLIENT_ORIGIN` accordingly.
 
 ## Scripts
