@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { request } from '../services/api';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine } from 'recharts';
+import { formatIndianNumber } from '../utils/formatNumber';
 
 export default function SavingsGoals() {
   const { token } = useAuth();
@@ -66,12 +67,12 @@ export default function SavingsGoals() {
           <div key={g.id} className="bg-white p-4 rounded shadow">
             <div className="flex items-center justify-between">
               <div className="font-semibold">{g.name}</div>
-              <div className="text-sm text-gray-600">Target: ₹{Number(g.target_amount).toFixed(2)} by {new Date(g.target_date).toLocaleDateString()}</div>
+              <div className="text-sm text-gray-600">Target: ₹{formatIndianNumber(g.target_amount)} by {new Date(g.target_date).toLocaleDateString()}</div>
             </div>
             <div className="h-2 bg-gray-200 rounded mt-3">
               <div className="h-2 rounded bg-blue-600" style={{ width: `${Math.min(100, g.progress||0)}%` }}></div>
             </div>
-            <div className="text-xs mt-1">Saved ₹{Number(g.current_savings||0).toFixed(2)}</div>
+            <div className="text-xs mt-1">Saved ₹{formatIndianNumber(g.current_savings||0)}</div>
 
             {/* Forecast details */}
             {(() => {
@@ -86,10 +87,10 @@ export default function SavingsGoals() {
               return (
                 <div className="mt-3 text-sm">
                   <div className="flex flex-wrap gap-4">
-                    <div>Avg monthly: ₹{Number(info.avg_monthly||0).toFixed(2)}</div>
+                    <div>Avg monthly: ₹{formatIndianNumber(info.avg_monthly||0)}</div>
                     <div>Est. completion: {info.estimated_completion_date || '—'}</div>
                     <div className={statusColor(info.status)}>Status: {info.status === 'on_track' ? 'On Track' : info.status === 'slightly_behind' ? 'Slightly Behind' : info.status === 'behind' ? 'Behind Schedule' : '—'}</div>
-                    <div>Required/month: ₹{Number(info.required_per_month||0).toFixed(2)}</div>
+                    <div>Required/month: ₹{formatIndianNumber(info.required_per_month||0)}</div>
                     <div>Completion probability: {Number(info.completion_probability||0).toFixed(0)}%</div>
                   </div>
                   <div className="h-60 mt-2">
@@ -97,8 +98,8 @@ export default function SavingsGoals() {
                       <LineChart data={buildChart(g.id, g.target_amount)}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="month" />
-                        <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
-                        <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+                        <YAxis tickFormatter={(v)=>`₹${formatIndianNumber(v, 0)}`} />
+                        <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
                         <Legend />
                         <Line type="monotone" dataKey="amount" stroke="#3b82f6" name="Saved per month" />
                         <Line type="monotone" dataKey="target" stroke="#10b981" strokeDasharray="5 5" dot={false} name="Target" />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, PieChart, Pie, Cell } from 'recharts';
 import { request } from '../services/api';
+import { formatIndianNumber } from '../utils/formatNumber';
 
 export default function Savings() {
   const { token } = useAuth();
@@ -39,13 +40,13 @@ export default function Savings() {
             <li key={g.id} className="py-2 flex justify-between">
               <div>
                 <div className="font-semibold">{g.name}</div>
-                <div className="text-sm text-gray-600">Target ₹{g.target_amount.toFixed(2)} by {new Date(g.target_date).toLocaleDateString()}</div>
+                <div className="text-sm text-gray-600">Target ₹{formatIndianNumber(g.target_amount)} by {new Date(g.target_date).toLocaleDateString()}</div>
               </div>
               <div className="w-48">
                 <div className="h-2 bg-gray-200 rounded">
                   <div className="h-2 rounded bg-blue-600" style={{ width: `${Math.min(100, g.progress)}%` }}></div>
                 </div>
-                <div className="text-xs mt-1 text-right">₹{g.current_savings.toFixed(2)} saved</div>
+                <div className="text-xs mt-1 text-right">₹{formatIndianNumber(g.current_savings)} saved</div>
               </div>
             </li>
           ))}

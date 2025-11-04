@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { listAssets, createAsset, deleteAsset, updateAsset } from '../services/portfolio';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import { formatIndianNumber } from '../utils/formatNumber';
 
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6'];
 
@@ -41,9 +42,9 @@ export default function Portfolio() {
       <div className="bg-white p-4 rounded shadow">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">Portfolio {summary.diff >= 0 ? 'Profit' : 'Loss'}</h2>
-          <div className={`text-lg font-bold ${summary.diff >= 0 ? 'text-green-600' : 'text-red-600'}`}>₹{Math.abs(summary.diff).toFixed(2)}</div>
+          <div className={`text-lg font-bold ${summary.diff >= 0 ? 'text-green-600' : 'text-red-600'}`}>₹{formatIndianNumber(Math.abs(summary.diff))}</div>
         </div>
-        <div className="text-sm text-gray-600">Value ₹{summary.totalValue.toFixed(2)} vs Cost ₹{summary.totalCost.toFixed(2)}</div>
+        <div className="text-sm text-gray-600">Value ₹{formatIndianNumber(summary.totalValue)} vs Cost ₹{formatIndianNumber(summary.totalCost)}</div>
       </div>
       <div className="bg-white p-4 rounded shadow">
         <h2 className="text-xl font-semibold mb-3">Add Asset</h2>
@@ -65,7 +66,7 @@ export default function Portfolio() {
 
       <div className="bg-white p-4 rounded shadow">
         <h3 className="font-semibold mb-2">Assets</h3>
-        <div className="text-sm mb-2">Portfolio {summary.diff >= 0 ? <span className="text-green-600">Profit</span> : <span className="text-red-600">Loss</span>}: ₹{summary.diff.toFixed(2)} (Value ₹{summary.totalValue.toFixed(2)} vs Cost ₹{summary.totalCost.toFixed(2)})</div>
+        <div className="text-sm mb-2">Portfolio {summary.diff >= 0 ? <span className="text-green-600">Profit</span> : <span className="text-red-600">Loss</span>}: ₹{formatIndianNumber(summary.diff)} (Value ₹{formatIndianNumber(summary.totalValue)} vs Cost ₹{formatIndianNumber(summary.totalCost)})</div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -95,7 +96,7 @@ export default function Portfolio() {
                   <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+              <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -105,8 +106,8 @@ export default function Portfolio() {
             <LineChart data={lineData}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
-              <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
-              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+              <YAxis tickFormatter={(v)=>`₹${formatIndianNumber(v, 0)}`} />
+              <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
               <Legend />
               <Line type="monotone" dataKey="gain" stroke="#3b82f6" />
             </LineChart>
@@ -126,7 +127,7 @@ function AssetRow({ token, asset, onChanged, pnl }) {
       <td className="py-2">{asset.asset_name}</td>
       <td>{asset.type}</td>
       <td className="text-right">{Number(asset.quantity)}</td>
-      <td className="text-right">₹{Number(asset.buy_price)}</td>
+      <td className="text-right">₹{formatIndianNumber(asset.buy_price)}</td>
       <td className="text-right">
         {editing ? (
           <div className="flex items-center gap-2 justify-end">
@@ -136,12 +137,12 @@ function AssetRow({ token, asset, onChanged, pnl }) {
           </div>
         ) : (
           <>
-            ₹{Number(asset.current_price)}
+            ₹{formatIndianNumber(asset.current_price)}
             <button className="ml-2 text-blue-600" onClick={()=>setEditing(true)}>Edit</button>
           </>
         )}
       </td>
-      <td className={`text-right ${pnl>=0?'text-green-600':'text-red-600'}`}>₹{pnl.toFixed(2)}</td>
+      <td className={`text-right ${pnl>=0?'text-green-600':'text-red-600'}`}>₹{formatIndianNumber(pnl)}</td>
       <td className="text-right"><button className="text-red-600" onClick={async ()=>{ await deleteAsset(token, asset.id); await onChanged(); }}>Delete</button></td>
     </tr>
   );

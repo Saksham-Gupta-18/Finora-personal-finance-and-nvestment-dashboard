@@ -50,8 +50,9 @@ export async function createOne(req, res, next) {
 
 export async function listAll(req, res, next) {
   try {
-    const items = await getTransactionsByUser(req.user.id);
-    const stats = await getStats(req.user.id);
+    const { start, end } = req.query;
+    const items = await getTransactionsByUser(req.user.id, { start, end });
+    const stats = await getStats(req.user.id, { start, end });
     res.json({ transactions: items, stats });
   } catch (err) {
     next(err);
@@ -94,7 +95,7 @@ export async function updateOne(req, res, next) {
 export async function stats(req, res, next) {
   try {
     const { start, end } = req.query;
-    const totals = await getStats(req.user.id);
+    const totals = await getStats(req.user.id, { start, end });
     const monthly = await getMonthlyIncomeExpense(req.user.id, { start, end });
     const byCategory = await getExpenseByCategory(req.user.id, { start, end });
     const { getSavingByCategory } = await import('../models/transactionModel.js');

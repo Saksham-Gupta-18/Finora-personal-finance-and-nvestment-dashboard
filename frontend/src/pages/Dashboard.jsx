@@ -4,6 +4,7 @@ import { request } from '../services/api';
 import { deleteTransaction } from '../services/transactions';
 import Chart from '../components/Chart';
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer, PieChart, Pie, Cell, BarChart, Bar } from 'recharts';
+import { formatIndianNumber } from '../utils/formatNumber';
 
 export default function Dashboard() {
   const { token } = useAuth();
@@ -23,7 +24,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await request('/transactions', { token });
+        const data = await request(`/transactions?start=${encodeURIComponent(start||'')}&end=${encodeURIComponent(end||'')}`, { token });
         const statsData = await request(`/transactions/stats/summary?start=${encodeURIComponent(start||'')}&end=${encodeURIComponent(end||'')}`, { token });
         const fc = await request('/forecast', { token });
         const sfc = await request('/forecast/savings', { token });
@@ -103,8 +104,8 @@ export default function Dashboard() {
             <LineChart data={monthly}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
-              <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
-              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+              <YAxis tickFormatter={(v)=>`₹${formatIndianNumber(v, 0)}`} />
+              <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
               <Legend />
               <Line type="monotone" dataKey="income" stroke="#10b981" />
               <Line type="monotone" dataKey="expense" stroke="#ef4444" />
@@ -122,7 +123,7 @@ export default function Dashboard() {
                   <Cell key={`cell-${index}`} fill={["#3b82f6","#10b981","#f59e0b","#ef4444","#8b5cf6"][index % 5]} />
                 ))}
               </Pie>
-              <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+              <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
             </PieChart>
           </ResponsiveContainer>
         </div>
@@ -138,7 +139,7 @@ export default function Dashboard() {
                 <Cell key={`scell-${index}`} fill={["#3b82f6","#60a5fa","#93c5fd","#1d4ed8","#2563eb"][index % 5]} />
               ))}
             </Pie>
-            <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+            <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
           </PieChart>
         </ResponsiveContainer>
       </div>
@@ -172,8 +173,8 @@ export default function Dashboard() {
               })()}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
-                <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
-                <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+                <YAxis tickFormatter={(v)=>`₹${formatIndianNumber(v, 0)}`} />
+                <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
                 <Legend />
                 <Line type="monotone" dataKey="expense" stroke="#3b82f6" strokeDasharray="3 0"
                   dot={{ r: 3 }}
@@ -209,8 +210,8 @@ export default function Dashboard() {
                   return (
                     <tr key={goal.id || idx} className="border-b last:border-0">
                       <td className="py-2">{goal.name}</td>
-                      <td>₹{Number(goal.current_savings||0).toFixed(2)}</td>
-                      <td>₹{Number(goal.target_amount||0).toFixed(2)} by {goal.target_date ? new Date(goal.target_date).toLocaleDateString() : '—'}</td>
+                      <td>₹{formatIndianNumber(goal.current_savings||0)}</td>
+                      <td>₹{formatIndianNumber(goal.target_amount||0)} by {goal.target_date ? new Date(goal.target_date).toLocaleDateString() : '—'}</td>
                       <td>{f.not_enough_data ? '—' : (f.estimated_completion_date || '—')}</td>
                       <td className={statusColor}>{statusLabel}</td>
                     </tr>
@@ -230,8 +231,8 @@ export default function Dashboard() {
           <LineChart data={dailySeries}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="day" />
-            <YAxis tickFormatter={(v)=>`₹${Number(v).toFixed(0)}`} />
-            <Tooltip formatter={(val,name)=>[`₹${Number(val).toFixed(2)}`, name]} />
+            <YAxis tickFormatter={(v)=>`₹${formatIndianNumber(v, 0)}`} />
+            <Tooltip formatter={(val,name)=>[`₹${formatIndianNumber(val)}`, name]} />
             <Legend />
             <Line type="monotone" dataKey="income" stroke="#10b981" />
             <Line type="monotone" dataKey="expense" stroke="#ef4444" />
@@ -260,18 +261,19 @@ export default function Dashboard() {
                   <td className="py-2">{new Date(tx.date).toLocaleDateString()}</td>
                   <td className={tx.type === 'income' ? 'text-green-600' : 'text-red-600'}>{tx.type}</td>
                   <td>{(tx.note && tx.note.includes('saved_to:')) ? `saved to ${tx.note.split('saved_to:')[1]}` : tx.category}</td>
-                  <td className="text-right">₹{Number(tx.amount).toFixed(2)}</td>
+                  <td className="text-right">₹{formatIndianNumber(tx.amount)}</td>
                   <td className="text-right">
                     <button
                       className="text-red-600 hover:underline"
                       onClick={async ()=>{
                         try {
                           await deleteTransaction(token, tx.id);
-                          const data = await request('/transactions', { token });
+                          const data = await request(`/transactions?start=${encodeURIComponent(start||'')}&end=${encodeURIComponent(end||'')}`, { token });
                           setItems(data.transactions);
                           setStats({
                             total_income: Number(data.stats?.total_income || 0),
-                            total_expense: Number(data.stats?.total_expense || 0)
+                            total_expense: Number(data.stats?.total_expense || 0),
+                            total_saving: Number(data.stats?.total_saving || 0)
                           });
                         } catch (e) { setError(e.message); }
                       }}
@@ -291,7 +293,7 @@ function StatCard({ title, value, color }) {
   return (
     <div className="bg-white p-4 rounded shadow">
       <div className="text-sm text-gray-500">{title}</div>
-      <div className={`text-2xl font-bold ${color}`}>₹{Number(value).toFixed(2)}</div>
+      <div className={`text-2xl font-bold ${color}`}>₹{formatIndianNumber(value)}</div>
     </div>
   );
 }
@@ -326,7 +328,7 @@ function BudgetSection({ token }) {
           <div className={`h-3 rounded ${overBudget ? 'bg-red-500' : 'bg-accent'}`} style={{ width: `${percent}%` }}></div>
         </div>
         <div className="text-sm mt-1 flex items-center gap-2">
-          <span>₹{budget.spent.toFixed(2)} / ₹{budget.limit_amount.toFixed(2)} spent</span>
+          <span>₹{formatIndianNumber(budget.spent)} / ₹{formatIndianNumber(budget.limit_amount)} spent</span>
           {overBudget && <span className="text-red-600 font-semibold">Over budget</span>}
         </div>
       </div>
