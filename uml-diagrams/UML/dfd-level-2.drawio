@@ -1,0 +1,372 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram id="dfd-level2" name="DFD Level-2">
+    <mxGraphModel dx="2131" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="boundary" value="" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E5E7E9;rounded=1;arcSize=14;" parent="1" vertex="1">
+          <mxGeometry x="390" y="30" width="220" height="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-12" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6D0DE;" vertex="1" parent="1">
+          <mxGeometry x="400" y="1210" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-7" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6D0DE;" vertex="1" parent="1">
+          <mxGeometry x="400" y="860" width="200" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6D0DE;" vertex="1" parent="1">
+          <mxGeometry x="400" y="600" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6D0DE;" vertex="1" parent="1">
+          <mxGeometry x="400" y="340" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E6D0DE;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="200" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="users" value="D1: Users" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1F5FE;" parent="1" vertex="1">
+          <mxGeometry x="30" y="140" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="transactions" value="D2: Transactions" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1F5FE;" parent="1" vertex="1">
+          <mxGeometry x="20" y="460" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="budgets" value="D3: Budgets" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1F5FE;" parent="1" vertex="1">
+          <mxGeometry x="20" y="1020" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="portfolio" value="D4: Portfolio" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1F5FE;" parent="1" vertex="1">
+          <mxGeometry x="880" y="710" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="savings" value="D5: Savings Goals &amp; Contributions" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1F5FE;" parent="1" vertex="1">
+          <mxGeometry x="880" y="1010" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub1_1" value="1.1.1 Validate Credentials" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="120" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub1_2" value="1.1.2 Register New User" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="170" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub1_3" value="1.1.3 Hash Password" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="220" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub1_4" value="1.1.4 Maintain User Session" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="270" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2_1" value="1.2.1 Add Transaction" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="425" y="380" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2_2" value="1.2.2 Edit/Delete Transaction" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="425" y="430" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2_3" value="1.2.3 Categorize Transaction" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="425" y="480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub2_4" value="1.2.4 Validate Amount &amp; Date" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="425" y="530" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3_1" value="1.3.1 Add Asset" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="415" y="640" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3_2" value="1.3.2 Update Current Price" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="415" y="690" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3_3" value="1.3.3 Calculate Gain/Loss" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="415" y="740" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub3_4" value="1.3.4 Fetch Portfolio Summary" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="415" y="790" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4_1" value="1.4.1 Create Savings Goal" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="910" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4_2" value="1.4.2 Add Contribution" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="960" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4_3" value="1.4.3 Set Monthly Budget" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1010" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4_4" value="1.4.4 Validate Budget Limit" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1060" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub4_5" value="1.4.5 Track Goal Progress" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1110" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub5_1" value="1.5.1 Fetch Stored Data" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1240" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub5_2" value="1.5.2 Calculate Monthly Totals" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1290" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub5_3" value="1.5.3 Generate Forecast" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1340" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sub5_4" value="1.5.4 Generate Charts and Summaries" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1390" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1_1" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub1_1" target="users" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="140" as="sourcePoint" />
+            <mxPoint x="160" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1_2" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub1_2" target="users" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="190" as="sourcePoint" />
+            <mxPoint x="160" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1_2" value="Write User" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge1_2" vertex="1" connectable="0">
+          <mxGeometry x="0.5" y="-2" relative="1" as="geometry">
+            <mxPoint x="108" y="72" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1_3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub1_3" target="users" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="240" as="sourcePoint" />
+            <mxPoint x="160" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1_3" value="&lt;table&gt;&lt;tbody&gt;&lt;tr data-start=&quot;806&quot; data-end=&quot;880&quot;&gt;&lt;td data-start=&quot;854&quot; data-end=&quot;880&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr data-start=&quot;881&quot; data-end=&quot;950&quot;&gt;&lt;td data-start=&quot;881&quot; data-end=&quot;901&quot; data-col-size=&quot;sm&quot;&gt;Insert new &lt;br&gt;user record&lt;/td&gt;&lt;td data-start=&quot;901&quot; data-end=&quot;917&quot; data-col-size=&quot;sm&quot;&gt;&lt;br&gt;&lt;/td&gt;&lt;td data-start=&quot;917&quot; data-end=&quot;925&quot; data-col-size=&quot;sm&quot;&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge1_3" vertex="1" connectable="0">
+          <mxGeometry x="0.5" y="-2" relative="1" as="geometry">
+            <mxPoint x="105" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-24" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;917&quot; data-end=&quot;925&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;925&quot; data-end=&quot;950&quot; data-col-size=&quot;sm&quot;&gt;Store hashed&lt;br&gt;&amp;nbsp;password&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge1_3">
+          <mxGeometry x="-0.5741" y="-7" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1_4" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub1_4" target="users" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="290" as="sourcePoint" />
+            <mxPoint x="160" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1_4" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;774&quot; data-end=&quot;781&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;781&quot; data-end=&quot;805&quot; data-col-size=&quot;sm&quot;&gt;Check email/&lt;br&gt;password&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge1_4" vertex="1" connectable="0">
+          <mxGeometry x="0.5" y="-2" relative="1" as="geometry">
+            <mxPoint x="93" y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-25" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;995&quot; data-end=&quot;1002&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;1002&quot; data-end=&quot;1032&quot; data-col-size=&quot;sm&quot;&gt;Fetch user &lt;br&gt;session/profile&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge1_4">
+          <mxGeometry x="-0.6441" y="-6" relative="1" as="geometry">
+            <mxPoint x="-11" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2_1" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub2_1" target="transactions" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="340" as="sourcePoint" />
+            <mxPoint x="160" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-16" value="Insert a new transaction" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge2_1">
+          <mxGeometry x="-0.3893" y="12" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2_2" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub2_2" target="transactions" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="390" as="sourcePoint" />
+            <mxPoint x="160" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-17" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;1519&quot; data-end=&quot;1532&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;1532&quot; data-end=&quot;1573&quot; data-col-size=&quot;sm&quot;&gt;Update or delete &lt;br&gt;existing transaction&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge2_2">
+          <mxGeometry x="-0.4203" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2_3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub2_3" target="transactions" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="440" as="sourcePoint" />
+            <mxPoint x="160" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-18" value="Update&amp;nbsp;&lt;div&gt;category&lt;/div&gt;&lt;div&gt;&amp;nbsp;reference&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge2_3">
+          <mxGeometry x="-0.3329" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge2_4" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub2_4" target="transactions" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="490" as="sourcePoint" />
+            <mxPoint x="160" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-19" value="Verify transaction i&lt;div&gt;s valid&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge2_4">
+          <mxGeometry x="-0.5049" y="-7" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3_1" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub3_1" target="portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="540" as="sourcePoint" />
+            <mxPoint x="800" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-20" value="Insert new asset" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge3_1">
+          <mxGeometry x="-0.5008" y="-7" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3_2" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub3_2" target="portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="590" as="sourcePoint" />
+            <mxPoint x="800" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-21" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2207&quot; data-end=&quot;2215&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2215&quot; data-end=&quot;2231&quot; data-col-size=&quot;sm&quot;&gt;Update price&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge3_2">
+          <mxGeometry x="-0.4855" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3_3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub3_3" target="portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="640" as="sourcePoint" />
+            <mxPoint x="800" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-22" value="Read asset and&amp;nbsp;&lt;div&gt;price data&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge3_3">
+          <mxGeometry x="-0.5009" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge3_4" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub3_4" target="portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="690" as="sourcePoint" />
+            <mxPoint x="800" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-23" value="Read entire&lt;div&gt;&amp;nbsp;portfolio&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge3_4">
+          <mxGeometry x="-0.5138" y="6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4_1" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub4_1" target="savings" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="740" as="sourcePoint" />
+            <mxPoint x="800" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-26" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2812&quot; data-end=&quot;2820&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2820&quot; data-end=&quot;2844&quot; data-col-size=&quot;sm&quot;&gt;Add new savings goal&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge4_1">
+          <mxGeometry x="-0.457" y="-10" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4_2" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub4_2" target="savings" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="790" as="sourcePoint" />
+            <mxPoint x="800" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-27" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2894&quot; data-end=&quot;2902&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2902&quot; data-end=&quot;2928&quot; data-col-size=&quot;sm&quot;&gt;Add contribution &lt;br&gt;entry&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge4_2">
+          <mxGeometry x="-0.4251" y="-6" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4_3" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub4_3" target="budgets" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="840" as="sourcePoint" />
+            <mxPoint x="160" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-28" value="&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2974&quot; data-end=&quot;2982&quot; data-col-size=&quot;sm&quot;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;table&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td data-start=&quot;2982&quot; data-end=&quot;3005&quot; data-col-size=&quot;sm&quot;&gt;Insert a new budget&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge4_3">
+          <mxGeometry x="-0.2471" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4_4" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub4_4" target="budgets" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="890" as="sourcePoint" />
+            <mxPoint x="160" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-29" value="Check if user&amp;nbsp;&lt;div&gt;has exceeded budget&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge4_4">
+          <mxGeometry x="-0.3974" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge4_5" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub4_5" target="savings" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="940" as="sourcePoint" />
+            <mxPoint x="800" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-31" value="Fetch goal progress data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="edge4_5">
+          <mxGeometry x="-0.507" y="9" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5_1_u" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub5_1" target="users" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="990" as="sourcePoint" />
+            <mxPoint x="160" y="160" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="420" y="1270" />
+              <mxPoint x="-30" y="1270" />
+              <mxPoint x="-30" y="230" />
+              <mxPoint x="200" y="230" />
+              <mxPoint x="200" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5_1_u" value="Read All Stored Data for Analytics" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge5_1_u" vertex="1" connectable="0">
+          <mxGeometry x="0.5" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5_1_t" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub5_1" target="transactions" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="990" as="sourcePoint" />
+            <mxPoint x="160" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint y="1260" />
+              <mxPoint y="770" />
+              <mxPoint x="150" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5_1_t" value="Read All Stored Data for Analytics" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge5_1_t" vertex="1" connectable="0">
+          <mxGeometry x="0.5" y="-2" relative="1" as="geometry">
+            <mxPoint x="-3" y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5_1_b" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub5_1" target="budgets" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="990" as="sourcePoint" />
+            <mxPoint x="160" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5_1_p" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="sub5_1" target="portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="580" y="990" as="sourcePoint" />
+            <mxPoint x="800" y="220" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1060" y="1260" />
+              <mxPoint x="1060" y="880" />
+              <mxPoint x="880" y="880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5_1_p" value="Read All Stored Data for Analytics" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge5_1_p" vertex="1" connectable="0">
+          <mxGeometry x="0.5" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-2" value="1.1 User Authentication" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="80" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-4" value="1.2 Transaction management" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="415" y="350" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-6" value="1.3&amp;nbsp; portfolio mangement" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="610" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-8" value="1.4&amp;nbsp; savings &amp;amp; budget management" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="870" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-13" value="1.5 Dashboard &amp;amp; analytics" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="415" y="1210" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="jZGxn_n20y0G1iRyL7XV-14" value="FINORA SYSTEM" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="40" width="110" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

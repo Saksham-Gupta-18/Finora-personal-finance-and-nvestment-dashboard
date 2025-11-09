@@ -1,0 +1,457 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram id="user-flow" name="User Flow">
+    <mxGraphModel dx="1281" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="group_auth" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="340" y="220" width="200" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="group_transaction" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="130" y="750" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="group_portfolio" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="130" y="1000" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="group_savings" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="130" y="1250" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="group_budget" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="130" y="1500" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="group_analytics" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="130" y="1750" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="start" value="Start" style="ellipse;whiteSpace=wrap;html=1;fillColor=#C8E6C9;" parent="1" vertex="1">
+          <mxGeometry x="400" y="30" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="i0CtTy6rOwCwxefWgmD9-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="decision_auth" target="group_auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_auth" value="Login or Register?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;" parent="1" vertex="1">
+          <mxGeometry x="380" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user_reg_details" value="User enters registration details" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="360" y="230" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_validate_reg" value="System validates input" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="360" y="280" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_create_account" value="System creates account" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="360" y="330" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_login_creds" value="User enters login credentials" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="360" y="230" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_validate_login" value="System validates credentials" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="360" y="280" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dashboard" value="Dashboard" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="360" y="380" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_action" value="What to do?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;" parent="1" vertex="1">
+          <mxGeometry x="160" y="770" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user_select_transaction" value="User selects Add Transaction" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="850" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_enter_transaction" value="User enters transaction details" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="900" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_validate_transaction" value="System validates amount &amp; date" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="950" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_categorize_transaction" value="System categorizes transaction" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1000" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_save_transaction" value="System saves transaction" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1050" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_select_portfolio" value="User selects Portfolio Management" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1100" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_portfolio" value="View or Add Asset?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;" parent="1" vertex="1">
+          <mxGeometry x="160" y="1150" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_fetch_portfolio" value="System fetches portfolio summary" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1230" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_view_portfolio" value="User views portfolio" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1280" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_enter_asset" value="User enters asset details" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1230" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_add_asset" value="System adds asset" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1280" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_update_price" value="System updates current price" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1330" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_calc_gain_loss" value="System calculates gain/loss" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1380" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_select_savings" value="User selects Savings Goals" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1350" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="decision_savings" value="Create Goal, Add Contribution, or View Progress?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFF9C4;" parent="1" vertex="1">
+          <mxGeometry x="130" y="1400" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="user_create_goal" value="User creates savings goal" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_save_goal" value="System saves goal" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1530" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_add_contribution" value="User adds contribution" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_save_contribution" value="System saves contribution" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1530" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_track_progress" value="System tracks goal progress" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1580" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_view_progress" value="User views progress" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1630" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_select_budget" value="User selects Budget Setting" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1600" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_set_budget" value="User sets monthly budget" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1650" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_validate_budget" value="System validates budget limit" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1700" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_save_budget" value="System saves budget" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1750" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_select_analytics" value="User selects Analytics &amp; Dashboard" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1850" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_fetch_analytics" value="System fetches stored data" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1900" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_calc_totals" value="System calculates monthly totals" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="1950" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_generate_forecast" value="System generates forecast" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="2000" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_generate_charts" value="System generates charts &amp; summaries" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="170" y="2050" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_view_analytics" value="User views analytics dashboard" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="2100" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="user_logout" value="User logs out" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#BBDEFB;" parent="1" vertex="1">
+          <mxGeometry x="170" y="2150" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="end" value="End" style="ellipse;whiteSpace=wrap;html=1;fillColor=#C8E6C9;" parent="1" vertex="1">
+          <mxGeometry x="180" y="2210" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_start_decision" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="start" target="decision_auth" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="80" as="sourcePoint" />
+            <mxPoint x="440" y="120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_reg" value="Register" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_auth" target="user_reg_details" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="150" as="sourcePoint" />
+            <mxPoint x="390" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_reg_validate" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_reg_details" target="sys_validate_reg" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="250" as="sourcePoint" />
+            <mxPoint x="440" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_validate_create" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_validate_reg" target="sys_create_account" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="300" as="sourcePoint" />
+            <mxPoint x="440" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_create_login" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_create_account" target="user_login_creds" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="350" as="sourcePoint" />
+            <mxPoint x="440" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_login" value="Login" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_auth" target="user_login_creds" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="150" as="sourcePoint" />
+            <mxPoint x="470" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_login_validate" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_login_creds" target="sys_validate_login" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="250" as="sourcePoint" />
+            <mxPoint x="440" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_validate_dashboard" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_validate_login" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="440" y="300" as="sourcePoint" />
+            <mxPoint x="440" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_dashboard_decision" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" target="decision_action" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="370" y="786.9565217391305" as="sourcePoint" />
+            <mxPoint x="220" y="770" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_transaction" value="Add Transaction" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_action" target="user_select_transaction" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="800" as="sourcePoint" />
+            <mxPoint x="170" y="850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_select_enter" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_select_transaction" target="user_enter_transaction" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="870" as="sourcePoint" />
+            <mxPoint x="250" y="900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_enter_validate_t" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_enter_transaction" target="sys_validate_transaction" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="920" as="sourcePoint" />
+            <mxPoint x="250" y="950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_validate_categorize" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_validate_transaction" target="sys_categorize_transaction" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="970" as="sourcePoint" />
+            <mxPoint x="250" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_categorize_save" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_categorize_transaction" target="sys_save_transaction" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1020" as="sourcePoint" />
+            <mxPoint x="250" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_save_dashboard_t" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_save_transaction" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="720" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_portfolio" value="Portfolio Management" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_action" target="user_select_portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="800" as="sourcePoint" />
+            <mxPoint x="250" y="1100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_select_decision_p" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_select_portfolio" target="decision_portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1120" as="sourcePoint" />
+            <mxPoint x="220" y="1150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_view" value="View" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_portfolio" target="sys_fetch_portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="1180" as="sourcePoint" />
+            <mxPoint x="170" y="1230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_fetch_view" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_fetch_portfolio" target="user_view_portfolio" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1250" as="sourcePoint" />
+            <mxPoint x="250" y="1280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_view_dashboard_p" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_view_portfolio" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="950" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_add" value="Add" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_portfolio" target="user_enter_asset" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="1180" as="sourcePoint" />
+            <mxPoint x="250" y="1230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_enter_add" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_enter_asset" target="sys_add_asset" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1250" as="sourcePoint" />
+            <mxPoint x="250" y="1280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_add_update" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_add_asset" target="sys_update_price" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1300" as="sourcePoint" />
+            <mxPoint x="250" y="1330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_update_calc" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_update_price" target="sys_calc_gain_loss" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1350" as="sourcePoint" />
+            <mxPoint x="250" y="1380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_calc_dashboard_p" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_calc_gain_loss" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="1050" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_savings" value="Savings Goals" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_action" target="user_select_savings" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="800" as="sourcePoint" />
+            <mxPoint x="250" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_select_decision_s" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_select_savings" target="decision_savings" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1370" as="sourcePoint" />
+            <mxPoint x="220" y="1400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_create" value="Create Goal" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_savings" target="user_create_goal" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="1430" as="sourcePoint" />
+            <mxPoint x="170" y="1480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_create_save_g" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_create_goal" target="sys_save_goal" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1500" as="sourcePoint" />
+            <mxPoint x="250" y="1530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_save_dashboard_s" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_save_goal" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="1200" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_contrib" value="Add Contribution" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_savings" target="user_add_contribution" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="1430" as="sourcePoint" />
+            <mxPoint x="250" y="1480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_add_save_c" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_add_contribution" target="sys_save_contribution" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1500" as="sourcePoint" />
+            <mxPoint x="250" y="1530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_save_track" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_save_contribution" target="sys_track_progress" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1550" as="sourcePoint" />
+            <mxPoint x="250" y="1580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_track_dashboard_s" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_track_progress" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="1250" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_view_p" value="View Progress" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_savings" target="sys_track_progress" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="1430" as="sourcePoint" />
+            <mxPoint x="250" y="1580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_track_view" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_track_progress" target="user_view_progress" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1600" as="sourcePoint" />
+            <mxPoint x="250" y="1630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_view_dashboard_s2" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_view_progress" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="1300" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_budget" value="Budget Setting" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_action" target="user_select_budget" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="800" as="sourcePoint" />
+            <mxPoint x="250" y="1600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_select_set" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_select_budget" target="user_set_budget" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1620" as="sourcePoint" />
+            <mxPoint x="250" y="1650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_set_validate_b" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_set_budget" target="sys_validate_budget" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1670" as="sourcePoint" />
+            <mxPoint x="250" y="1700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_validate_save_b" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_validate_budget" target="sys_save_budget" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1720" as="sourcePoint" />
+            <mxPoint x="250" y="1750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_save_dashboard_b" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_save_budget" target="dashboard" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="470" y="1420" as="sourcePoint" />
+            <mxPoint x="470" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_decision_analytics" value="Analytics &amp; Dashboard" style="endArrow=classic;html=1;rounded=0;" parent="1" source="decision_action" target="user_select_analytics" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="800" as="sourcePoint" />
+            <mxPoint x="250" y="1850" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_select_fetch" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_select_analytics" target="sys_fetch_analytics" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1870" as="sourcePoint" />
+            <mxPoint x="250" y="1900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_fetch_calc" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_fetch_analytics" target="sys_calc_totals" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1920" as="sourcePoint" />
+            <mxPoint x="250" y="1950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_calc_forecast" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_calc_totals" target="sys_generate_forecast" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="1970" as="sourcePoint" />
+            <mxPoint x="250" y="2000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_forecast_charts" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_generate_forecast" target="sys_generate_charts" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="2020" as="sourcePoint" />
+            <mxPoint x="250" y="2050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_charts_view" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="sys_generate_charts" target="user_view_analytics" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="2070" as="sourcePoint" />
+            <mxPoint x="250" y="2100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_view_logout" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_view_analytics" target="user_logout" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="2120" as="sourcePoint" />
+            <mxPoint x="250" y="2150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge_logout_end" value="" style="endArrow=classic;html=1;rounded=0;" parent="1" source="user_logout" target="end" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="2170" as="sourcePoint" />
+            <mxPoint x="220" y="2210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

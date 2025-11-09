@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram id="dfd-level0" name="DFD Level-0">
+    <mxGraphModel dx="2131" dy="596" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="User" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E1F5FE;" parent="1" vertex="1">
+          <mxGeometry x="-10" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="process" value="FINORA System" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+          <mxGeometry x="350" y="400" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="datastore" value="Database" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+          <mxGeometry x="740" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="flow4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.233;entryY=0.043;entryDx=0;entryDy=0;exitX=0.605;exitY=0.017;exitDx=0;exitDy=0;entryPerimeter=0;exitPerimeter=0;edgeStyle=orthogonalEdgeStyle;curved=1;" parent="1" source="user" target="process" edge="1">
+          <mxGeometry x="0.6602" y="255" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="380" y="550" as="sourcePoint" />
+            <mxPoint x="250" y="550" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="63" y="320" />
+              <mxPoint x="385" y="320" />
+            </Array>
+            <mxPoint x="-10" y="-70" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-4" value="Login / Register / Add&lt;div&gt;Transactions / Manage&lt;/div&gt;&lt;div&gt;Portfolio / Set Savings Goals&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="flow4">
+          <mxGeometry x="-0.018" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-2" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.623;exitY=-0.01;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;edgeStyle=orthogonalEdgeStyle;curved=1;" edge="1" parent="1" source="process" target="datastore">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="550" as="sourcePoint" />
+            <mxPoint x="450" y="500" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="444" y="320" />
+              <mxPoint x="800" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-12" value="Read &amp;amp; Write User ,&lt;div&gt;Transactions , Categories,&lt;/div&gt;&lt;div&gt;Portfolio, Goals , Budgets&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Mo71SVPP2CU44b284tAf-2">
+          <mxGeometry x="-0.0041" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.708;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;curved=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="datastore" target="process">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="800" y="530" />
+              <mxPoint x="456" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-7" value="Stored Data (User ,&lt;div&gt;Transactions, Portfolio ,&amp;nbsp;&lt;/div&gt;&lt;div&gt;Savings , etc.)&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Mo71SVPP2CU44b284tAf-6">
+          <mxGeometry x="0.0067" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.632;entryY=0.99;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.267;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;curved=1;" edge="1" parent="1" source="process" target="user">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="530" />
+              <mxPoint x="66" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Mo71SVPP2CU44b284tAf-11" value="Dashboard View / Analytics /&lt;div&gt;Forecasts / Portfolio Summary&amp;nbsp;&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Mo71SVPP2CU44b284tAf-8">
+          <mxGeometry x="0.0028" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
